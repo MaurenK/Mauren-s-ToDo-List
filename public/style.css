@@ -1,0 +1,170 @@
+/* Basic styling for the whole page */
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun, cartoonish font */
+    background-color: #ffe6f1; /* Soft pink background for the page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Styling for the container of the todo list */
+  .container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px; /* More rounded corners for a softer look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow with slightly higher blur */
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation on hover */
+    animation: bounceIn 0.5s ease-out; /* Add bounce effect when the container is loaded */
+  }
+  
+  .container:hover {
+    transform: scale(1.05); /* Slightly enlarges the container on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+  }
+  
+  /* Header Styling */
+  h1 {
+    color: #d5006d; /* Bright pink for the header */
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Fun shadow for the text */
+  }
+  
+  /* Input Field */
+  input {
+    width: 80%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 6px; /* Rounded corners */
+    border: 2px solid #ff66b2; /* Light pink border */
+    outline: none;
+    font-size: 1em;
+    position: relative;
+    animation: pulse-border 1.5s infinite; /* Pulsing border animation */
+  }
+  
+  input:focus {
+    border-color: #ff3385; /* Darker pink when focused */
+  }
+  
+  /* Button Styling */
+  button {
+    width: 80%;
+    padding: 12px;
+    background-color: #ff66b2; /* Light pink background */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    position: relative;
+    animation: bounce 0.5s ease-out; /* Add bounce effect when the button is hovered */
+  }
+  
+  button:hover {
+    background-color: #ff3385; /* Darker pink on hover */
+  }
+  
+  /* Add cute animation to list items */
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  li {
+    background-color: #fff0f5; /* Soft pink background for list items */
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 8px; /* Rounded corners */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for each item */
+    transition: transform 0.2s ease;
+    animation: fade-in 0.5s ease-out; /* Animation for list item */
+  }
+  
+  li:hover {
+    transform: translateX(5px); /* Slight hover effect to move the list item */
+  }
+  
+  li button {
+    background-color: #ff3385; /* Darker pink for delete button */
+    border: none;
+    color: white;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    animation: bounce 0.5s ease-out; /* Bounce animation on button hover */
+  }
+  
+  li button:hover {
+    background-color: #d5006d; /* Even darker pink on hover */
+  }
+  
+  /* Cartoonish Keyframe animations */
+  @keyframes pulse-border {
+    0% {
+      box-shadow: 0 0 0 0px rgba(255, 102, 178, 0.5); /* Initial no-shadow state */
+    }
+    50% {
+      box-shadow: 0 0 0 8px rgba(255, 102, 178, 0.6); /* Expand shadow to create pulsing effect */
+    }
+    100% {
+      box-shadow: 0 0 0 0px rgba(255, 102, 178, 0.5); /* Contract back to normal state */
+    }
+  }
+  
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes bounceIn {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-10px);
+    }
+    50% {
+      transform: translateY(5px);
+    }
+    70% {
+      transform: translateY(-3px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
