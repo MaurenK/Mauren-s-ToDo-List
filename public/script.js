@@ -10,21 +10,25 @@ function addTodo() {
 
     // Create a new list item
     const li = document.createElement('li');
-    li.textContent = todoText;
 
-    // Create a "Complete" button
-    const completeBtn = document.createElement('button');
-    completeBtn.textContent = 'Complete';
-    completeBtn.onclick = () => toggleCompleteTask(li, completeBtn);
+    // Create the task text element
+    const taskText = document.createElement('span');
+    taskText.textContent = todoText;
+
+    // Create a checkbox for task completion
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.onclick = () => toggleCompleteTask(li, checkbox);
 
     // Create a "Delete" button
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
     deleteBtn.onclick = () => removeTodoItem(li);
 
-    // Append the buttons to the list item
-    li.appendChild(completeBtn);
-    li.appendChild(deleteBtn);
+    // Append task text, checkbox, and delete button to the list item
+    li.appendChild(taskText); // Add task text first
+    li.appendChild(checkbox); // Add checkbox second
+    li.appendChild(deleteBtn); // Add delete button last
 
     // Append the list item to the ul
     document.getElementById('todoList').appendChild(li);
@@ -38,22 +42,19 @@ function removeTodoItem(li) {
     li.remove();
 }
 
-// This is for toggling a task's completed state
-function toggleCompleteTask(li, completeBtn) {
-    // Check if the task is already completed
-    if (li.classList.contains('completed')) {
-        // Undo completion (unclick the task)
-        li.classList.remove('completed');
-        li.style.opacity = '1'; // Restore full opacity
-        li.style.textDecoration = 'none'; // Remove strike-through
-        li.style.color = ''; // Restore text color
-        completeBtn.textContent = 'Complete'; // Change button text back to 'Complete'
-    } else {
+// This is for toggling a task's completed state using the checkbox
+function toggleCompleteTask(li, checkbox) {
+    const taskText = li.querySelector('span'); // Get task text
+
+    if (checkbox.checked) {
         // Mark as completed
         li.classList.add('completed');
-        li.style.opacity = '0.5'; // Make the task appear faded
-        li.style.textDecoration = 'line-through'; // Add strike-through effect
-        li.style.color = '#888'; // Change text color to gray
-        completeBtn.textContent = 'Undo'; // Change button text to 'Undo'
+        taskText.style.textDecoration = 'line-through'; // Add strike-through effect
+        taskText.style.color = '#888'; // Change text color to gray
+    } else {
+        // Undo completion (unclick the task)
+        li.classList.remove('completed');
+        taskText.style.textDecoration = 'none'; // Remove strike-through
+        taskText.style.color = ''; // Restore text color
     }
 }

@@ -167,4 +167,31 @@ body {
       transform: translateY(0);
     }
   }
-  
+  /* Remove animated border and default checkbox appearance */
+input[type="checkbox"] {
+  border: none; /* Remove default border */
+  outline: none; /* Remove focus outline */
+  appearance: none; /* Remove default checkbox appearance */
+  width: 20px; /* Make checkbox a bit larger */
+  height: 20px;
+  border-radius: 5px; /* Rounded corners */
+  background-color: #fff; /* White background */
+  border: 2px solid #ff66b2; /* Light pink border */
+  position: relative;
+}
+
+/* Checkbox checked state */
+input[type="checkbox"]:checked {
+  background-color: #ff3385; /* Dark pink when checked */
+  border-color: #ff3385; /* Dark pink border */
+}
+
+/* Optional: Custom checkmark inside checkbox */
+input[type="checkbox"]:checked::before {
+  content: '✔'; /* Checkmark symbol */
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  font-size: 14px;
+  color: white;
+}
